@@ -1,13 +1,18 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import gui.util.Alerts;
+import gui.util.Constraints;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class ViewController {
+public class ViewController implements Initializable {
 	@FXML
 	private Button btSubmit;
 
@@ -33,5 +38,12 @@ public class ViewController {
 			Alerts.showAlert("Error authenticating", null, txtPassword.getText(), AlertType.ERROR);
 		}
 
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		Constraints.setTextFieldMaxLength(txtUser, 5);
+		Constraints.setTextFieldMaxLength(txtPassword, 5);
+		
 	}
 }
